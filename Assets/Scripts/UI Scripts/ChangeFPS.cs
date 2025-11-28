@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class ChangeFPS : MonoBehaviour
 {
     [Header("Frame Rate Control")]
@@ -8,7 +9,8 @@ public class ChangeFPS : MonoBehaviour
     private int lastFrameRate;
 
     float deltaTime = 0f;
-    public TextMeshProUGUI FPS; 
+    public TextMeshProUGUI FPS;
+    public Slider FPSSlider;
     void Start()
     {
         QualitySettings.vSyncCount = 0; // Disable VSync
@@ -40,11 +42,12 @@ public class ChangeFPS : MonoBehaviour
 
         int fps = Mathf.CeilToInt(1f / deltaTime);
 
-        FPS.text = "Sim. Speed: x"+Time.timeScale.ToString("F2");
-        
+        FPS.text = "Simulation Speed: x"+Time.timeScale.ToString("F2");
+
 
         // --- SLIDER ---
-        
-      //  frameRate = (int)GUI.HorizontalSlider(new Rect(10, 130, 300, 25), frameRate, 60, 3000);
+       // Debug.Log((int)FPSSlider.GetComponent<Slider>().value);
+        //(int)FPSSlider.value;//
+        frameRate = (int)FPSSlider.value;//(int)GUI.HorizontalSlider(new Rect(10, 130, 300, 25), frameRate, 60, 3000);
     }
 }
