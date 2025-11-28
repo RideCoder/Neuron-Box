@@ -1,34 +1,33 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnFood : MonoBehaviour
 {
+    [Header("Settings")]
     public GameObject entity;
     public GameObject parent;
     public int amount;
-    public float spawnTime;
-    public float time;
     public int spawnLimit;
 
-    // Spawn boundaries
+    // Frames/Ticks between spawns
+    public float spawnTime;
+    public float time;
+
+    [Header("Spawn Area (Relative to this Object)")]
+    // These are now LOCAL offsets. 
+    // e.g., (-8, -4) means 8 units left and 4 units down FROM THE SPAWNER.
     public Vector2 min = new Vector2(-8f, -4f);
     public Vector2 max = new Vector2(8f, 4f);
 
-    // Attempts before giving up on finding a valid location
     private const int maxAttempts = 20;
+
+    private List<GameObject> trackedEntities = new List<GameObject>();
 
     void Start()
     {
         for (int i = 0; i < amount; i++)
         {
-            Vector3 spawnPos = GetValidSpawnPosition();
-            if (spawnPos != Vector3.negativeInfinity)
-            {
-                SpawnEntity(spawnPos);
-            }
-            else
-            {
-                Debug.LogWarning("Failed to find valid spawn position during Start()");
-            }
+            TrySpawnEntity();
         }
     }
 
@@ -36,42 +35,39 @@ public class SpawnFood : MonoBehaviour
     {
         time += 1;
 
-        Entity[] entities = FindObjectsByType<Entity>(FindObjectsSortMode.None);
-        int count = 0;
-
-        foreach (var e in entities)
+        // Cleanup list
+        for (int i = trackedEntities.Count - 1; i >= 0; i--)
         {
-            if (e.data.id == entity.GetComponent<Entity>().data.id)
-            {
-                count++;
-            }
+            if (trackedEntities[i] == null) trackedEntities.RemoveAt(i);
         }
 
-        if (time >= spawnTime && count < spawnLimit)
+        if (time >= spawnTime && trackedEntities.Count < spawnLimit)
         {
-            Vector3 spawnPos = GetValidSpawnPosition();
-            if (spawnPos != Vector3.negativeInfinity)
-            {
-                SpawnEntity(spawnPos);
-            }
-            else
-            {
-                Debug.LogWarning("Failed to find valid spawn position during Update()");
-            }
-
+            TrySpawnEntity();
             time = 0;
         }
     }
 
-    // Spawn helper
+    private void TrySpawnEntity()
+    {
+        Vector3 spawnPos = GetValidSpawnPosition();
+        if (spawnPos != Vector3.negativeInfinity)
+        {
+            SpawnEntity(spawnPos);
+        }
+    }
+
     private void SpawnEntity(Vector3 pos)
     {
         GameObject clone = Instantiate(entity);
-        clone.transform.parent = parent.transform;
+
+        if (parent != null)
+            clone.transform.parent = parent.transform;
+
         clone.transform.position = pos;
+        trackedEntities.Add(clone);
     }
 
-    // Returns a valid spawn position or Vector3.negativeInfinity if none found
     private Vector3 GetValidSpawnPosition()
     {
         Collider2D prefabCol = entity.GetComponent<Collider2D>();
@@ -79,7 +75,12 @@ public class SpawnFood : MonoBehaviour
 
         for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
-            Vector2 pos = new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
+            // Calculate random offset
+            float randomX = Random.Range(min.x, max.x);
+            float randomY = Random.Range(min.y, max.y);
+
+            // Add the offset to the Spawner's current position
+            Vector2 pos = (Vector2)transform.position + new Vector2(randomX, randomY);
 
             // Overlap check
             Collider2D hit = Physics2D.OverlapBox(pos, size, 0f);
@@ -89,17 +90,23 @@ public class SpawnFood : MonoBehaviour
                 return new Vector3(pos.x, pos.y, 0);
             }
         }
-
-        // No valid position found
         return Vector3.negativeInfinity;
     }
 
-    // Visualize spawn check area in Scene view
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(Vector3.zero, new Vector3(max.x - min.x, max.y - min.y, 0));
+
+        // Calculate size of the box
+        float width = max.x - min.x;
+        float height = max.y - min.y;
+
+        // Calculate center offset relative to the local min/max
+        Vector3 localCenterOffset = new Vector3(min.x + width / 2, min.y + height / 2, 0);
+
+        // Draw the cube at Spawner Position + Offset
+        Gizmos.DrawWireCube(transform.position + localCenterOffset, new Vector3(width, height, 0));
     }
 #endif
 }
