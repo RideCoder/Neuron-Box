@@ -45,6 +45,6 @@ public class ChangeFPS : MonoBehaviour
 
         // --- SLIDER ---
         
-        frameRate = (int)GUI.HorizontalSlider(new Rect(10, 130, 300, 25), frameRate, 60, 3000);
+      //  frameRate = (int)GUI.HorizontalSlider(new Rect(10, 130, 300, 25), frameRate, 60, 3000);
     }
 }
