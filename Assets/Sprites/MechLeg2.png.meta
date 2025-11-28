@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 489f8f968b03a204e9946c4c1b96e74f
+guid: 2fbbcf9eaf76d1542943f21128979064
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3303496430474235141
-    second: MechLeg_0
+      213: -6911981401496143963
+    second: MechLeg2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MechLeg_0
+      name: MechLeg2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 15
+        y: 0
         width: 128
-        height: 30
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf2ffc8cf7f9722d0800000000000000
-      internalID: -3303496430474235141
+      spriteID: 5a737bd5985b310a0800000000000000
+      internalID: -6911981401496143963
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 332a0c3e8bb52b24aa06472d0522fa24
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MechLeg_0: -3303496430474235141
+      MechLeg2_0: -6911981401496143963
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
