@@ -19,6 +19,9 @@ public class SensorModule : Module
 
     public override void UpdateModule()
     {
+
+        
+    
         int i = 0;
         foreach (GameObject gameObject in gameObjects)
         {
@@ -36,17 +39,22 @@ public class SensorModule : Module
                 inputNeurons[j].nextActivation = 0;
             }
 
+          
+
             if (entityType == null) return;
 
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
-
+        
             // Filter by Entity type
             List<GameObject> matching = new List<GameObject>();
             foreach (Collider2D collider in hits)
             {
+
                 Entity e = collider.gameObject.GetComponent<Entity>();
+              
                 if (e != null && e.data.id == entityType.id)
                 {
+                  
                     matching.Add(collider.gameObject);
                 }
             }
@@ -94,15 +102,14 @@ public class SensorModule : Module
                 }
 
                 // No directional activation → "nothing detected"
-                if (inputNeurons[0].activation == 0 &&
-                    inputNeurons[1].activation == 0 &&
-                    inputNeurons[2].activation == 0 &&
-                    inputNeurons[3].activation == 0)
-                {
-                    inputNeurons[4].activation = 1;
-                }
+                
             }
+
+           
         }
+        inputNeurons[4].nextActivation = 1;
+        Debug.Log("WIOEJF");
+        Debug.Log(inputNeurons[4].activation);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

@@ -138,7 +138,8 @@ public class NeuralNetwork : MonoBehaviour
             n.type = Neuron.Type.Input;
             neurons.Add(n);
             n.thresholdMin = 0;
-
+            n.x = Random.Range(-700f, -400f);
+            n.y = Random.Range(-400f, 400f);
             n.thresholdMax = 1;
         }
         for (int i = 0; i < outputNeurons; ++i)
@@ -147,7 +148,9 @@ public class NeuralNetwork : MonoBehaviour
             n.type = Neuron.Type.Output;
             neurons.Add(n);
             n.thresholdMin = 0;
-
+            
+            n.x = Random.Range(400f, 700f);
+            n.y = Random.Range(-400f, 400f);
             n.thresholdMax = 1;
         }
         for (int i = 0; i < normalNeurons; ++i)
@@ -155,6 +158,8 @@ public class NeuralNetwork : MonoBehaviour
             Neuron n = new Neuron();
             n.type = Neuron.Type.Normal;
             neurons.Add(n);
+            n.x = Random.Range(-300f, 300f);
+            n.y = Random.Range(-400f, 400f);
             n.thresholdMin = 0;
 
         }

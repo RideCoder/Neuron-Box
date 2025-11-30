@@ -197,8 +197,8 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 5411633}
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 783630820}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 287780454}
   - component: {fileID: 287780453}
   m_Layer: 6
-  m_Name: Square (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 374488340}
   - component: {fileID: 374488339}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Follow Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 450526797}
   - component: {fileID: 450526796}
   m_Layer: 6
-  m_Name: Square (3)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1776,7 +1776,7 @@ GameObject:
   - component: {fileID: 499947841}
   - component: {fileID: 499947843}
   m_Layer: 0
-  m_Name: ShowUI
+  m_Name: GUI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1796,6 +1796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShowUI
   contentArea: {fileID: 203407923}
   moduleButtonPrefab: {fileID: 3478012308869714071, guid: 9a6f15fcbc8ec6843850d2160ab5c639, type: 3}
+  neuralNetworkArea: {fileID: 1394774224}
 --- !u!4 &499947842
 Transform:
   m_ObjectHideFlags: 0
@@ -1824,6 +1825,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowUI
   menuRoot: {fileID: 745416167}
+  buttons:
+  - {fileID: 1276117267}
+  - {fileID: 1285734764}
+  - {fileID: 1714258028}
+  - {fileID: 1993102229}
+  - {fileID: 5411632}
+  - {fileID: 688409449}
+  - {fileID: 1136508550}
 --- !u!1 &502558777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,7 +1845,7 @@ GameObject:
   - component: {fileID: 502558780}
   - component: {fileID: 502558779}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Duplicate Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2857,8 +2866,8 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 688409450}
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 1983733975}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2991,7 +3000,7 @@ GameObject:
   - component: {fileID: 783630821}
   - component: {fileID: 783630820}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Copy Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3537,7 +3546,7 @@ GameObject:
   - component: {fileID: 1066594865}
   - component: {fileID: 1066594864}
   m_Layer: 6
-  m_Name: Square
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3997,8 +4006,8 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1136508551}
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 374488339}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4064,7 +4073,7 @@ GameObject:
   - component: {fileID: 1138376743}
   - component: {fileID: 1138376742}
   m_Layer: 6
-  m_Name: Square (2)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4313,8 +4322,8 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1276117268}
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 1527759927}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4567,14 +4576,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1285734765}
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 1491489072}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1557365889}
-        m_TargetAssemblyTypeName: GUIFunctions, Assembly-CSharp
-        m_MethodName: ShowModules
+        m_TargetAssemblyTypeName: UIRemoteEvents, Assembly-CSharp
+        m_MethodName: DeleteObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4670,7 +4679,7 @@ MonoBehaviour:
   parent: {fileID: 198518590}
   amount: 7
   spawnLimit: 7
-  spawnTime: 300
+  spawnTime: 150
   time: 0
   min: {x: -15, y: 8}
   max: {x: 15, y: -8}
@@ -4870,6 +4879,114 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364763230}
   m_CullTransparentMesh: 1
+--- !u!1 &1394774223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1394774224}
+  m_Layer: 5
+  m_Name: Neural Network View
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1394774224
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394774223}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1429652976}
+  m_Father: {fileID: 1605091818}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1429652975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1429652976}
+  - component: {fileID: 1429652978}
+  - component: {fileID: 1429652977}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1429652976
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429652975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1394774224}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 200, y: -50}
+  m_SizeDelta: {x: 1400, y: 800}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1429652977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429652975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1429652978
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429652975}
+  m_CullTransparentMesh: 1
 --- !u!1 &1434894734
 GameObject:
   m_ObjectHideFlags: 0
@@ -4965,7 +5082,7 @@ GameObject:
   - component: {fileID: 1491489073}
   - component: {fileID: 1491489072}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Delete Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5174,7 +5291,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 841471468}
   m_HandleRect: {fileID: 880120604}
   m_Direction: 0
-  m_MinValue: 30
+  m_MinValue: 60
   m_MaxValue: 3000
   m_WholeNumbers: 1
   m_Value: 60
@@ -5327,7 +5444,7 @@ GameObject:
   - component: {fileID: 1527759928}
   - component: {fileID: 1527759927}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Modules Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5602,7 +5719,7 @@ GameObject:
   - component: {fileID: 1557365888}
   - component: {fileID: 1557365889}
   m_Layer: 0
-  m_Name: GUI Functions
+  m_Name: UI Remote Events
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5635,79 +5752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70494d5123e4f143a1ea382e2cdbcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GUIFunctions
---- !u!1001 &1584119894
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 25.967882
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 15.766214
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.4858818
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 15.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262781017511341982, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6298621480718738427, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_Name
-      value: Background
-      objectReference: {fileID: 0}
-    - target: {fileID: 6298621480718738427, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dffeeae47bc378d49b08bde277de1e5f, type: 3}
 --- !u!1 &1595361522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5842,6 +5886,7 @@ RectTransform:
   - {fileID: 603301073}
   - {fileID: 1491192775}
   - {fileID: 231618910}
+  - {fileID: 1394774224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5927,14 +5972,14 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1714258029}
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 1928509179}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1557365889}
-        m_TargetAssemblyTypeName: GUIFunctions, Assembly-CSharp
-        m_MethodName: ShowModules
+        m_TargetAssemblyTypeName: UIRemoteEvents, Assembly-CSharp
+        m_MethodName: ShowNetwork
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6311,7 +6356,7 @@ GameObject:
   - component: {fileID: 1928509180}
   - component: {fileID: 1928509179}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Network Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6449,7 +6494,7 @@ GameObject:
   - component: {fileID: 1983733976}
   - component: {fileID: 1983733975}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Paste Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6651,8 +6696,8 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1993102230}
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 502558779}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -6772,13 +6817,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 2602244625191885426, guid: 8ae81c538d0eb214eae136440650c69a, type: 3}
-  parent: {fileID: 0}
   amount: 5
-  spawnLimit: 5
   spawnTime: 2
   time: 0
-  min: {x: -14, y: -8}
-  max: {x: 14, y: 8}
+  spawnLimit: 5
 --- !u!4 &2026713819
 Transform:
   m_ObjectHideFlags: 0
@@ -6805,7 +6847,7 @@ GameObject:
   - component: {fileID: 2028613995}
   - component: {fileID: 2028613994}
   m_Layer: 0
-  m_Name: GUI
+  m_Name: Select Object Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7050,7 +7092,7 @@ GameObject:
   - component: {fileID: 2105015974}
   - component: {fileID: 2105015973}
   m_Layer: 0
-  m_Name: Square (4)
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7218,7 +7260,6 @@ SceneRoots:
   - {fileID: 1840934498}
   - {fileID: 1249722897}
   - {fileID: 198518591}
-  - {fileID: 1584119894}
   - {fileID: 1066594866}
   - {fileID: 1138376744}
   - {fileID: 287780455}
