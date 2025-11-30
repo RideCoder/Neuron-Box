@@ -8156,7 +8156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShowUI
   outlineMaterial: {fileID: 2100000, guid: bc6da4580f5514e458fe5def87e138be, type: 2}
   selectionMaterial: {fileID: 2100000, guid: 28638862ea1084726a3511cd325fc53d, type: 2}
-  multiSelectionMaterial: {fileID: -876546973899608171, guid: a3d800b099a06e0478fb790c5e79057a, type: 3}
 --- !u!4 &2028613995
 Transform:
   m_ObjectHideFlags: 0

@@ -13,5 +13,6 @@ public class SelectObjectButton : MonoBehaviour
     private void OnButtonClicked()
     {
         SpawnObject.currentObject = prefabToSelect;
+        BuildModeDisplayObject.currentObject = prefabToSelect;
     }
 }

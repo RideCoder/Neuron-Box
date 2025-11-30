@@ -71,15 +71,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _Fuzzy: 0.39
+    - _Fuzzy: 0.13
     - _Glossiness: 0.5
     - _Metallic: 0
-    - _Range: 0.54
+    - _Range: 0.25
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0, g: 0.97214127, b: 1, a: 0}
-    - _Color2: {r: 1, g: 1, b: 1, a: 0}
+    - _Color1: {r: 0.8297051, g: 0, b: 0.9245283, a: 0}
+    - _Color2: {r: 0.22099766, g: 0, b: 0.3132075, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

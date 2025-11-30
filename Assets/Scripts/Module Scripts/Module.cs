@@ -24,8 +24,12 @@ public class Module : MonoBehaviour
 
     protected void Awake()
     {
-        organism = gameObject.transform.root.GetComponentInChildren<Organism>();
-        network = organism.network;
+        if (gameObject.transform.root.GetComponentInChildren<Organism>() != null)
+        {
+            organism = gameObject.transform.root.GetComponentInChildren<Organism>();
+            network = organism.network;
+        }
+        
     }
     public void AddToOrganism(Organism organism)
     {
