@@ -108,8 +108,8 @@ public class SensorModule : Module
            
         }
         inputNeurons[4].nextActivation = 1;
-        Debug.Log("WIOEJF");
-        Debug.Log(inputNeurons[4].activation);
+       
+  
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

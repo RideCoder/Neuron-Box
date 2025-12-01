@@ -287,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neurons: []
   neuronClone: {fileID: 0}
-  inputNeurons: 24
+  inputNeurons: 25
   outputNeurons: 4
   normalNeurons: 30
   connectionCount: 550
@@ -380,7 +380,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5384025631085736673, guid: 3dc3d8743922a774db02e423a2c8f7ce, type: 3}
+  m_Sprite: {fileID: 6943535168657398750, guid: 2870a82571240134fb98ede5e47c9441, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

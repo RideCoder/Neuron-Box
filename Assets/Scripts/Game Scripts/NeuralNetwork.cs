@@ -1,23 +1,27 @@
 ﻿
 using NUnit.Framework.Internal;
 using System.Collections.Generic;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Unity.Burst.Intrinsics.Arm;
 [System.Serializable]
-public class Connection
+
+public struct Connection
 {
     public float weight;
-    public int destIndex;
 
+    [System.NonSerialized] // Can't serialize direct references
+    public Neuron targetNeuron;
 
-    public Connection(float weight, int destIndex)
+    // Constructor takes direct neuron reference (not index!)
+    public Connection(float weight, Neuron targetNeuron)
     {
         this.weight = weight;
-        this.destIndex = destIndex;
+        this.targetNeuron = targetNeuron;
     }
 }
-
 
 
 [System.Serializable]
@@ -49,7 +53,7 @@ public class Neuron
         this.y = 0;
         this.activation = 0;
         this.nextActivation = 0;
-        this.refactoryPeriod = Random.Range(2,6);
+        this.refactoryPeriod = Random.Range(2, 6);
         this.thresholdMin = Random.Range(0f, .3f);
         this.thresholdMax = Random.Range(.75f, 1.0f);
         this.refactory = refactoryPeriod;
@@ -59,14 +63,14 @@ public class Neuron
 
     public void Update(NeuralNetwork network)
     {
-     
+
         if (refactory > 0)
         {
             refactory -= 1;
         }
         else
         {
-        
+
             Propagate(network);
         }
 
@@ -87,10 +91,10 @@ public class Neuron
 
                 foreach (var connection in connections)
                 {
-                    
-                    network.neurons[connection.destIndex].nextActivation += activation * connection.weight;
-                    if (network.neurons[connection.destIndex].nextActivation > 1.0f) { network.neurons[connection.destIndex].nextActivation = 1.0f; }
-                    if (network.neurons[connection.destIndex].nextActivation < 0.0f) { network.neurons[connection.destIndex].nextActivation = 0.0f; }
+
+                    connection.targetNeuron.nextActivation += activation * connection.weight;
+                    //   if (network.neurons[connection.destIndex].nextActivation > 1.0f) { network.neurons[connection.destIndex].nextActivation = 1.0f; }
+                    //   if (network.neurons[connection.destIndex].nextActivation < 0.0f) { network.neurons[connection.destIndex].nextActivation = 0.0f; }
                     /*
                     network.neurons[connection.destIndex].activation += activation * connection.weight;
                     if (network.neurons[connection.destIndex].activation > 1.0f) { network.neurons[connection.destIndex].activation = 1.0f; }
@@ -111,11 +115,12 @@ public class Neuron
 
     }
 }
-[System.Serializable]
+
 public class NeuralNetwork : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    [System.NonSerialized]
     public List<Neuron> neurons = new List<Neuron>();
     public GameObject neuronClone;
     private List<GameObject> neuronCircles = new List<GameObject>();
@@ -148,7 +153,7 @@ public class NeuralNetwork : MonoBehaviour
             n.type = Neuron.Type.Output;
             neurons.Add(n);
             n.thresholdMin = 0;
-            
+
             n.x = Random.Range(400f, 700f);
             n.y = Random.Range(-400f, 400f);
             n.thresholdMax = 1;
@@ -166,39 +171,39 @@ public class NeuralNetwork : MonoBehaviour
 
         for (int i = 0; i < connectionCount; ++i)
         {
-                int source = Random.Range(0, neurons.Count);
-                int dest = Random.Range(0, neurons.Count);
+            int source = Random.Range(0, neurons.Count);
+            int dest = Random.Range(0, neurons.Count);
 
-                while (neurons[source].type == Neuron.Type.Output)
-                {
+            while (neurons[source].type == Neuron.Type.Output)
+            {
 
-                    source = Random.Range(0, neurons.Count);
+                source = Random.Range(0, neurons.Count);
 
 
-                }
+            }
 
-                while (neurons[dest].type == Neuron.Type.Input)
-                {
-                    dest = Random.Range(0, neurons.Count);
-                }
+            while (neurons[dest].type == Neuron.Type.Input)
+            {
+                dest = Random.Range(0, neurons.Count);
+            }
 
-                while (neurons[source].type == Neuron.Type.Input && neurons[dest].type == Neuron.Type.Input ||
-                neurons[source].type == Neuron.Type.Input && neurons[dest].type == Neuron.Type.Output)
-                {
-                    dest = Random.Range(0, neurons.Count);
-                }
-                if (source == dest)
-                {
-                    dest = (dest + 1) % neurons.Count;
-                }
-                //  Debug.Log(source);
-                // Debug.Log(dest);*/
-              Connection c = new Connection(Random.Range(-1.0f, 1.0f), dest);
-               neurons[source].connections.Add(c);
-          /*  int dest = i+4;
-            int source = i;
-            Connection c = new Connection(Random.Range(1.0f, 1.0f), dest);
-              neurons[source].connections.Add(c);*/
+            while (neurons[source].type == Neuron.Type.Input && neurons[dest].type == Neuron.Type.Input ||
+            neurons[source].type == Neuron.Type.Input && neurons[dest].type == Neuron.Type.Output)
+            {
+                dest = Random.Range(0, neurons.Count);
+            }
+            if (source == dest)
+            {
+                dest = (dest + 1) % neurons.Count;
+            }
+            //  Debug.Log(source);
+            // Debug.Log(dest);*/
+            Connection c = new Connection(Random.Range(-1.0f, 1.0f), neurons[dest]);
+            neurons[source].connections.Add(c);
+            /*  int dest = i+4;
+              int source = i;
+              Connection c = new Connection(Random.Range(1.0f, 1.0f), dest);
+                neurons[source].connections.Add(c);*/
         }
 
         foreach (Neuron n in neurons)
@@ -214,41 +219,29 @@ public class NeuralNetwork : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-        int i = 0;
-        foreach (GameObject n in neuronCircles)
-        {
-            if (n != null)
-            {
-                n.GetComponent<SpriteRenderer>().color = new Color(neurons[i].activation * 255, neurons[i].activation * 255, neurons[i].activation * 255);
-                ++i;
-            }
 
+        for (int i = 0; i < neurons.Count; i++)
+        {
+            neurons[i].Update(this);
         }
+
+        for (int i = 0; i < neurons.Count; i++)
+        {
+            neurons[i].activation = Mathf.Clamp(neurons[i].nextActivation, 0f, 1f);
+        }
+
+
+
         foreach (Neuron neuron in neurons)
         {
 
-
-            neuron.Update(this);
-        }
-
-        foreach (Neuron neuron in neurons)
-        {
-           
+            neuron.nextActivation *= .98f;
+            if (neuron.nextActivation < 0.001f) neuron.nextActivation = 0;
             neuron.activation = neuron.nextActivation;
 
 
-        }
-        foreach (Neuron neuron in neurons)
-        {
-            
-                   neuron.nextActivation *= .98f;
-                   if (neuron.nextActivation < 0.001f) neuron.nextActivation = 0;
-                   neuron.activation = neuron.nextActivation;
-               
-
-          //  neuron.activation *= .98f;
-        //    if (neuron.activation < 0.001f) neuron.activation = 0;
+            //  neuron.activation *= .98f;
+            //    if (neuron.activation < 0.001f) neuron.activation = 0;
         }
     }
 

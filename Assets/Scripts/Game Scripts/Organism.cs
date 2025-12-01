@@ -38,12 +38,12 @@ public class Organism : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (!isClone)
         {
-         
+
             SetupOrganism();
             GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
             for (int i = 0; i < 10; i++)
             {
-            //    Reproduce();
+                //    Reproduce();
             }
         }
     }
@@ -81,18 +81,18 @@ public class Organism : MonoBehaviour
         {
             rb.linearVelocity = rb.linearVelocity.normalized * 2f;
         }
-/*
-        // 2. BOUNDARY CHECK (New Feature)
-        // This forces the organism to stay inside X[-10, 10] and Y[-6, 6]
-        float clampedX = Mathf.Clamp(transform.position.x, -10f, 10f);
-        float clampedY = Mathf.Clamp(transform.position.y, -5f, 5f);
+        /*
+                // 2. BOUNDARY CHECK (New Feature)
+                // This forces the organism to stay inside X[-10, 10] and Y[-6, 6]
+                float clampedX = Mathf.Clamp(transform.position.x, -10f, 10f);
+                float clampedY = Mathf.Clamp(transform.position.y, -5f, 5f);
 
-        if (transform.position.x != clampedX || transform.position.y != clampedY)
-        {
-            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
-            // Optional: Kill velocity if hitting a wall so they don't stick
-            // rb.linearVelocity = Vector2.zero; 
-        }*/
+                if (transform.position.x != clampedX || transform.position.y != clampedY)
+                {
+                    transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+                    // Optional: Kill velocity if hitting a wall so they don't stick
+                    // rb.linearVelocity = Vector2.zero; 
+                }*/
     }
 
     private void OnDestroy()
@@ -193,7 +193,7 @@ public class Organism : MonoBehaviour
         List<Neuron> neurons = network.neurons;
         Neuron neuron = neurons[Random.Range(0, neurons.Count)];
         neuron.refactoryPeriod += Random.Range(-2, 3);
-          neuron.refactoryPeriod = Mathf.Clamp(neuron.refactoryPeriod, 1, 60);
+        neuron.refactoryPeriod = Mathf.Clamp(neuron.refactoryPeriod, 1, 60);
         // 1. EXISTING WEIGHT MUTATION
         for (int i = 0; i < power; i++)
         {
@@ -207,9 +207,9 @@ public class Organism : MonoBehaviour
                 conn.weight = Mathf.Clamp(conn.weight, -1f, 1f);
             }
 
-         
+
         }
-        
+
         // 2. STRUCTURAL MUTATION: CONNECTIONS (1% Chance)
         // Random.value returns 0.0 to 1.0, so <= 0.01 is 1%
         if (Random.value <= 0.01f)
@@ -226,10 +226,10 @@ public class Organism : MonoBehaviour
 
                     while (neurons[source].type == Neuron.Type.Output)
                     {
-                    
+
 
                         source = Random.Range(0, neurons.Count);
-                       
+
 
                     }
 
@@ -247,8 +247,8 @@ public class Organism : MonoBehaviour
                     {
                         dest = (dest + 1) % neurons.Count;
                     }
-            
-                    Connection c = new Connection(Random.Range(-1.0f, 1.0f), dest);
+
+                    Connection c = new Connection(Random.Range(-1.0f, 1.0f), neurons[dest]);
                     neurons[source].connections.Add(c);
                 }
             }
@@ -323,12 +323,12 @@ public class Organism : MonoBehaviour
         }*/
     }
 
-    public void Collide(EntitySO entity, GameObject gameObject)
-    {
+    //  public void Collide(EntitySO entity, GameObject gameObject)
+    //  {
     //    ++foodEaten;
-      //  health = maxHealth;
+    //  health = maxHealth;
 
-    }
+    //  }
     public void Reproduce()
     {
         if (parent == null)
@@ -400,7 +400,7 @@ public class Organism : MonoBehaviour
 
             }
 
-            
+
             // Create NEW neurons for the clone (deep copy structure)
             for (int i = 0; i < network.neurons.Count; i++)
             {
@@ -418,11 +418,11 @@ public class Organism : MonoBehaviour
                 newNeuron.thresholdMin = originalNeuron.thresholdMin;
 
                 // Copy connections with NEW Connection objects
-                  
+
                 for (int j = 0; j < originalNeuron.connections.Count; j++)
                 {
                     Connection originalConn = originalNeuron.connections[j];
-                    Connection newConn = new Connection(originalConn.weight, originalConn.destIndex);
+                    Connection newConn = new Connection(originalConn.weight, originalConn.targetNeuron);
                     newNeuron.connections.Add(newConn);
                 }
 
@@ -431,16 +431,16 @@ public class Organism : MonoBehaviour
         }
 
         // Mutate the cloned network
-        clonedOrganism.Mutate(40);
+        clonedOrganism.Mutate(80);
 
-  
+
 
         Module[] moduleArray = cloneObj.GetComponentsInChildren<Module>();
         for (int i = 0; i < moduleArray.Length; i++)
         {
             moduleArray[i].organism = clonedOrganism;
             moduleArray[i].network = clonedOrganism.network;
-     
+
             moduleArray[i].AddSockets();
             moduleArray[i].AddToOrganism(clonedOrganism);
         }

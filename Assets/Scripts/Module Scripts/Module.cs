@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Module : MonoBehaviour 
+public class Module : MonoBehaviour
 {
     public int inputSockets;
     public int outputSockets;
@@ -29,14 +29,50 @@ public class Module : MonoBehaviour
             organism = gameObject.transform.root.GetComponentInChildren<Organism>();
             network = organism.network;
         }
-        
+
     }
+    private void OnDisable()
+    {
+        if (organism != null)
+        {
+            
+            RemoveFromOrganism(organism);
+        }
+    }
+
+    public void RemoveFromOrganism(Organism organism)
+    {
+        //Add function to organism to get free input neurons 
+
+        for (int i = 0; i < inputSockets; i++)
+        {
+
+            inputNeurons[i].module = null;
+
+        }
+
+        for (int i = 0; i < outputSockets; i++)
+        {
+
+            outputNeurons[i].module = null;
+
+        }
+        organism.modules.Remove(this);
+    
+
+    }
+
+
+
+
+
+    
     public void AddToOrganism(Organism organism)
     {
         //Add function to organism to get free input neurons 
         inputNeurons = organism.GetFreeInputNeurons();
         outputNeurons = organism.GetFreeOutputNeurons();
-  
+    Debug.Log(inputNeurons.Count);
         if (inputNeurons.Count >= inputSockets && outputNeurons.Count >= outputSockets)
         {
           

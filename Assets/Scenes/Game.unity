@@ -1338,8 +1338,8 @@ MonoBehaviour:
   spawnLimit: 100
   spawnTime: 120
   time: 0
-  min: {x: -15, y: 8}
-  max: {x: 15, y: -8}
+  min: {x: -10, y: -6}
+  max: {x: 10, y: 6}
 --- !u!4 &375369564
 Transform:
   m_ObjectHideFlags: 0
@@ -1349,7 +1349,7 @@ Transform:
   m_GameObject: {fileID: 375369562}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.84, y: 10.77, z: -0.035577618}
+  m_LocalPosition: {x: -5.84, y: 7.01, z: -0.035577618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1828,7 +1828,7 @@ Transform:
   m_GameObject: {fileID: 450526795}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -73.13, y: 6.400943, z: 0}
+  m_LocalPosition: {x: -61.01, y: 6.400943, z: 0}
   m_LocalScale: {x: 97.30772, y: 78.72176, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2511,7 +2511,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.8, y: 5.37, z: -10}
+  m_LocalPosition: {x: -1.2, y: 1.74, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4582,7 +4582,7 @@ Transform:
   m_GameObject: {fileID: 1066594863}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -67.94843, y: 70.8, z: 0}
+  m_LocalPosition: {x: -67.94843, y: 62.9, z: 0}
   m_LocalScale: {x: 168.34532, y: 109.60059, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5665,7 +5665,7 @@ Transform:
   m_GameObject: {fileID: 1333581268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.84, y: 10.77, z: -0.035577618}
+  m_LocalPosition: {x: -5.47, y: 6.88, z: -0.035577618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5689,8 +5689,8 @@ MonoBehaviour:
   spawnLimit: 7
   spawnTime: 150
   time: 0
-  min: {x: -15, y: 8}
-  max: {x: 15, y: -8}
+  min: {x: -10, y: -6}
+  max: {x: 10, y: 6}
 --- !u!1 &1336796158
 GameObject:
   m_ObjectHideFlags: 0
@@ -8105,7 +8105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca17f047f288ad04bba5a67fb48903bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 2602244625191885426, guid: 460ac1fbf9bde2f42b2ca2edfb017fa4, type: 3}
+  entity: {fileID: 2602244625191885426, guid: 598f9c9e061f8ce4ba0c4034133d5b59, type: 3}
   amount: 5
   spawnTime: 2
   time: 0
@@ -8154,7 +8154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b98b2f6e72ad0a4dba834d2e289a170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowUI
-  outlineMaterial: {fileID: 2100000, guid: bc6da4580f5514e458fe5def87e138be, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 4459fff084dd84526ab8fd5082d2eacb, type: 2}
   selectionMaterial: {fileID: 2100000, guid: 28638862ea1084726a3511cd325fc53d, type: 2}
 --- !u!4 &2028613995
 Transform:

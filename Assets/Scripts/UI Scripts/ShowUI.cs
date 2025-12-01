@@ -24,9 +24,9 @@ public class ShowUI : MonoBehaviour
            
             buttons[1].interactable = true;
 
-            if (SelectObject.currentlySelectedObject.GetComponentsInChildren<NeuralNetwork>() != null)
+            if (SelectObject.currentlySelectedObject.GetComponentInChildren<NeuralNetwork>() != null)
             {
-
+                
                 buttons[2].interactable = true;
 
 
